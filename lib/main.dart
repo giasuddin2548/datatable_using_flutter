@@ -27,14 +27,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  final columns=['Id', 'Name', 'Email', 'Phone', 'Address', 'Reference'];
+  final columns=['Id', 'Name', 'Email', 'Phone', 'Address', 'Reference', 'Actions'];
   List<UserInfo> _userList=[
-    UserInfo(id: '110', name: 'Gias ', email: 'gias@gmail.com', phone: '+8801811913041', address: 'Uttara, Dhaka', ref: 'Jainal uddin'),
+    UserInfo(id: '110', name: 'Bias ', email: 'gias@gmail.com', phone: '+8801811913041', address: 'Uttara, Dhaka', ref: 'Jainal uddin'),
     UserInfo(id: '111', name: 'Gias ', email: 'gias@gmail.com', phone: '+8801811913041', address: 'Uttara, Dhaka', ref: 'Jainal uddin'),
-    UserInfo(id: '112', name: 'Gias ', email: 'gias@gmail.com', phone: '+8801811913041', address: 'Uttara, Dhaka', ref: 'Jainal uddin'),
-    UserInfo(id: '113', name: 'Gias ', email: 'gias@gmail.com', phone: '+8801811913041', address: 'Uttara, Dhaka', ref: 'Jainal uddin'),
-    UserInfo(id: '114', name: 'Gias ', email: 'gias@gmail.com', phone: '+8801811913041', address: 'Uttara, Dhaka', ref: 'Jainal uddin'),
-    UserInfo(id: '115', name: 'Gias ', email: 'gias@gmail.com', phone: '+8801811913041', address: 'Uttara, Dhaka', ref: 'Jainal uddin'),
+    UserInfo(id: '112', name: 'Zias ', email: 'gias@gmail.com', phone: '+8801811913041', address: 'Uttara, Dhaka', ref: 'Jainal uddin'),
+    UserInfo(id: '113', name: 'Nias ', email: 'gias@gmail.com', phone: '+8801811913041', address: 'Uttara, Dhaka', ref: 'Jainal uddin'),
+    UserInfo(id: '114', name: 'Aias ', email: 'gias@gmail.com', phone: '+8801811913041', address: 'Uttara, Dhaka', ref: 'Jainal uddin'),
+    UserInfo(id: '115', name: 'Oias ', email: 'gias@gmail.com', phone: '+8801811913041', address: 'Uttara, Dhaka', ref: 'Jainal uddin'),
 
   ];
 
@@ -70,12 +70,28 @@ class _HomePageState extends State<HomePage> {
           },
           cells: [
             DataCell(Text(e.id)),
+
             DataCell(Text(e.name, overflow: TextOverflow.ellipsis,)),
             DataCell(Text(e.email)),
             DataCell(Text(e.phone)),
             DataCell(Text(e.address)),
             DataCell(Text(e.ref)),
+            DataCell(Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(onPressed: (){
+
+                  setState(() {
+                    userList.remove(e);
+
+                  });
+
+                }, icon: Icon(Icons.more_vert_outlined)),
+
+              ],
+            )),
           ],
+
 
       );
     } ).toList();
@@ -112,6 +128,7 @@ class _HomePageState extends State<HomePage> {
                   rows: _getRow(_userList),
                   dividerThickness: 1,
                   showBottomBorder: true,
+                  sortAscending: true,
 
 
 
